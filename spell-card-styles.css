@@ -1,0 +1,124 @@
+/* Spell Card Styles for TTRPG Aesthetic - Print-Friendly Sizing */
+
+:root {
+  /* Aesthetic Colors & Typography */
+  --card-bg: #fdf8e4;
+  --accent-color: #b08b4f;
+  --text-color: #333;
+  --header-font: Georgia, Cambria, "Times New Roman", Times, serif;
+  --body-font: Arial, Helvetica, sans-serif;
+  /* Print Sizing Variables */
+  --card-width: 48%;         /* Screen and print default width */
+  --card-print-width: 60%;   /* Width when printing */
+  --padding: 0.104in;        /* ~2.64mm padding for print accuracy */
+  --font-size-base: 11pt;    /* Base font size */
+  --h2-font-size: 20pt;      /* Title size */
+  --h3-font-size: 12pt;      /* Stat heading size */
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  --border-radius: 12px;
+}
+
+.spell-card {
+  display: inline-block;
+  width: var(--card-width);
+  margin: 0.5%;
+  padding: var(--padding);
+  background: var(--card-bg);
+  /* subtle parchment texture */
+  background-image: linear-gradient(135deg,
+                  rgba(255,255,255,0.08) 25%,
+                  transparent 25%, transparent 50%,
+                  rgba(255,255,255,0.08) 50%,
+                  rgba(255,255,255,0.08) 75%,
+                  transparent 75%, transparent);
+  background-size: 24px 24px;
+  border: 1px solid var(--accent-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  font-family: var(--body-font);
+  font-size: var(--font-size-base);
+  color: var(--text-color);
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  page-break-inside: avoid;
+}
+
+/* Decorative header accent bar */
+.spell-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 6px;
+  background: var(--accent-color);
+  border-radius: 3px;
+  margin-top: -3px;
+}
+
+/* Decorative corner flourish */
+.spell-card::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 12px;
+  height: 12px;
+  border-bottom: 2px solid var(--accent-color);
+  border-right: 2px solid var(--accent-color);
+}
+
+.spell-card h2 {
+  font-family: var(--header-font);
+  font-size: var(--h2-font-size);
+  margin: 0 0 8px;
+  font-weight: bold;
+  color: var(--accent-color);
+  text-align: center;
+}
+
+.spell-card h3 {
+  font-size: var(--h3-font-size);
+  margin: 6px 0 4px;
+  font-weight: 600;
+  color: var(--accent-color);
+  border-bottom: 1px solid var(--accent-color);
+  padding-bottom: 4px;
+}
+
+/* Two-column stat/detail layout */
+.spell-card .columns {
+  display: flex;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.spell-card .column {
+  flex: 1;
+  font-size: var(--font-size-base);
+}
+
+.spell-card p {
+  margin: 0.1in 0;
+  line-height: 1.4;
+  font-size: var(--font-size-base);
+}
+
+/* Hover/lift effect */
+.spell-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+@media print {
+  .spell-card {
+    width: var(--card-print-width);
+    margin: 0.5%;
+    box-shadow: none;
+    transform: none;
+    background-image: none;
+  }
+}
