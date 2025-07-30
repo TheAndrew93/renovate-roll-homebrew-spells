@@ -1,3 +1,5 @@
+This project was created as part of a personal initiative to experiment with interactive web applications and AI for a Homebrew Tabletop Roleplaying Game I created. Development was assisted by ChatGPT, providing support in coding, logic structuring, and interface design.
+
 # 🧙‍♂️ Spell Card Generator
 
 Generate printable 3.5" x 2" TTRPG spell cards from a CSV file — perfect for character sheets, encounter props, or just showing off your homebrew magic.
